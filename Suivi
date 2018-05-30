@@ -48,8 +48,8 @@ def aux2 (l,r2,i,x,y):
        
 def pos (z,x):
     p=(0,0)
-    p[1]=z%x
-    p[2]=z/x
+    p[0]=z%x
+    p[1]=z/x
     return p
     
 def listepos(l,x):
@@ -60,13 +60,13 @@ def listepos(l,x):
     
 def comptevoisin(l,i,x,y):
     n=0
-    if (i-1)>=0 & (i-1) in l:
+    if (i-1) in l:
             n+=1
-    if (i+1)<(x*y) & (i+1) in l:
+    if (i+1) in l:
             n+=1
-    if (i-x)>=0 & (i-x) in l:
+    if (i-x) in l:
             n+=1
-    if (i+x)<(x*y) & (i+x) in l:
+    if (i+x) in l:
             n+=1
     return n
 
