@@ -56,26 +56,13 @@ def imagetomatrice5(im,r,g,b,a,t):
             m[i][j]=a
             if a:
                 posi.append((i,j))
-    return (m,posi)
+    return (m,posi,l)
     
 im1=img.open("C:/Users/SIMPLYCASH/Pictures/Saved Pictures/image1.png")
 a=imagetomatrice5(im1,38,37,40,0,10)
 b=a[0]
 c=a[1]
 k1=[]
-
-
-
-        
-
-def cherchegroupe (mat,posi):
-    k1=[]
-    v=[]
-    for p in posi:
-        k12=comptevoisin(p,mat)
-        if k12>3:
-            k1.append(k12)
-            v.append(p)
     
         
     
@@ -185,7 +172,34 @@ def indmaxlen(gr):
             i=k
     return i
 
-k3=groupement(b,c)
-pos=posmoy(k3[indmaxlen(k3)])   
+#k3=groupement(b,c)
+#pos=posmoy(k3[indmaxlen(k3)])   
 
+def retour(cible,x,l):
+    n=5*len(cible)
+    rmoy=0
+    gmoy=0
+    bmoy=0
+    for p in cible:
+        (i,j)=p
+        for kx in range(5):
+            for ky in range(5):
+                (r,g,b,a)=l[int(x)*int(i+kx)+j+ky]
+                rmoy+=r
+                gmoy+=g
+                bmoy+=b
+    return (rmoy/n,gmoy/n,bmoy/n)
+            
+            
+def poscible(im,r,g,b,a,t):
+    (m,posi,l)=imagetomatrice5(im,r,g,b,a,t)
+    (x,y)=m.shape
+    g=groupement(m,posi)
+    cible=g[indmaxlen(g)]
+    return cible,posmoy(cible),retour(cible,x,l)
+  
+esp=poscible(im1,38,37,40,0,10)
+e1=esp[0]
+e2=esp[1]  
+e3=esp[2]
     
