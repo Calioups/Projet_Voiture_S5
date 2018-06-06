@@ -137,7 +137,30 @@ def indmaxlen(gr):
             i=k
     return i
 
-pos=posmoy(k3[indmaxlen(k3)])
+k4=k3[indmaxlen(k3)]
 
-print(pos)
+
+f=time.clock()
+
+
+def retour(cible,x,l):
+    n=len(cible)
+    rmoy=0
+    gmoy=0
+    bmoy=0
+    for p in cible:
+        (i,j)=p
+        (r,g,b,a)=l[int(x)*i+j]
+        rmoy+=r
+        gmoy+=g
+        bmoy+=b
+    return (rmoy/n,gmoy/n,bmoy/n)
+
+k12=retour(k4,1680,list(im1.getdata()))
+
+g=time.clock()
+
+print(g-f)
+print(k12)
+
 
